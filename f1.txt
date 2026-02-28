@@ -1,1 +1,2 @@
-This is the first file - m
+This is the first file 
+This is the modified first file
