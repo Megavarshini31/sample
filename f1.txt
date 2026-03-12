@@ -23,9 +23,9 @@ GRANT ALL PRIVILEGES ON DATABASE ddsonarqube to ddsonar;
 \q
 exit
 sudo apt install zip -y
-sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-10.0.0.68432.zip
-sudo unzip sonarqube-10.0.0.68432.zip
-sudo mv sonarqube-10.0.0.68432 sonarqube
+sudo wget https://binaries.sonarsource.com/Distribution/sonarqube/sonarqube-25.2.0.102705.zip
+sudo unzip sonarqube-25.2.0.102705.zip
+sudo mv sonarqube-25.2.0.102705 sonarqube
 sudo mv sonarqube /opt/
 sudo groupadd ddsonar
 sudo useradd -d /opt/sonarqube -g ddsonar ddsonar
@@ -52,14 +52,14 @@ LimitNOFILE=65536
 LimitNPROC=4096
 [Install]
 WantedBy=multi-user.target
+sudo systemctl enable sonar
+sudo systemctl start sonar
+sudo systemctl status sonar
 sudo nano /etc/sysctl.conf
 vm.max_map_count=262144
 fs.file-max=65536
 ulimit -n 65536
 ulimit -u 4096
-sudo systemctl enable sonar
-sudo systemctl start sonar
-sudo systemctl status sonar
 
 Jenkins (8080):
 Set custom tcp 8080
